@@ -1,7 +1,3 @@
-cpython_package_path <- function(...) {
-    system.file("cpython", ..., package = "CPython")
-}
-
 #' Path to the bundled CPython interpreter
 #'
 #' Returns the on-disk path to the CPython interpreter shipped with the
@@ -16,19 +12,23 @@ cpython_package_path <- function(...) {
 cpython_interpreter_path <- function(must_exist = TRUE) {
     candidates <- if (.Platform$OS.type == "windows") {
         c(
-            cpython_package_path("python.exe"),
-            cpython_package_path("PCbuild", "amd64", "python.exe"),
-            cpython_package_path("PCbuild", "win32", "python.exe")
+            system.file("python", "python.exe", package = "CPython"),
+            system.file("python", "Scripts", "python.exe", package = "CPython"),
+            system.file("cpython", "python.exe", package = "CPython"),
+            system.file("cpython", "PCbuild", "amd64", "python.exe", package = "CPython"),
+            system.file("cpython", "PCbuild", "win32", "python.exe", package = "CPython")
         )
     } else {
         c(
-            cpython_package_path("python"),
-            cpython_package_path("bin", "python3"),
-            cpython_package_path("bin", "python")
+            system.file("python", "bin", "python3", package = "CPython"),
+            system.file("python", "bin", "python", package = "CPython"),
+            system.file("cpython", "python", package = "CPython"),
+            system.file("cpython", "bin", "python3", package = "CPython"),
+            system.file("cpython", "bin", "python", package = "CPython")
         )
     }
 
-    candidates <- candidates[nzchar(candidates)]
+    candidates <- unique(candidates[nzchar(candidates)])
     existing <- candidates[file.exists(candidates)]
 
     if (length(existing) > 0L) {
