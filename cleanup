@@ -5,5 +5,5 @@ rm -f "$THISDir/config.log" || true
 rm -rf "$THISDir/inst/python" || true
 rm -rf "$THISDir/src/*.o" || true
 rm -rf "$THISDir/src/*.so" || true
-cd "$THISDir/src/cpython" || exit 1
+cd "$THISDir/inst/cpython" || exit 1
 make clean || true
