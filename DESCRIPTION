@@ -1,10 +1,13 @@
 Package: CPython
 Title: 'Python' Interpreter For 'R' Package Use 
-Version: 0.0.0.9000
-Authors@R: 
-    person(given = "Sounkou Mahamane", family = "Toure", email = "soukoutoure@gmail.com", role = c("aut", "cre"))
-Description: 'Python' interpreter built from source for use within 'R' packages.
+Version: 3.14-0.0.0.9000
+Authors@R: c(
+    person(given = "Sounkou Mahamane", family = "Toure", email = "soukoutoure@gmail.com", role = c("aut", "cre")),
+    person(given = "CPython Contributors", family = "", role = c("ctb")))
+Description: 'Python' interpreter built from source for use within 'R' packages. This can be used for tools
+    such as the build system 'meson'/'ninja'.
 Depends: R (>= 4.1.0)
+Copyright: See inst/AUTHORS
 License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
