@@ -1,0 +1,26 @@
+#!/bin/sh
+# configure script to build Cpython interpreter for R package use
+THISDir=`dirname $0`
+THISDir=`realpath ${THISDir}`
+MAKE=`"${R_HOME}/bin/R" CMD config MAKE`
+CC=`"${R_HOME}/bin/R" CMD config CC`
+CC=$(echo "${CC}" | awk '{print $1}')
+AR=`"${R_HOME}/bin/R" CMD config AR`
+AR=$(echo "${AR}" | awk '{print $1}')
+RANLIB=`"${R_HOME}/bin/R" CMD config RANLIB`
+Cpython="${THISDir}/src/cpython"
+> "$THISDir/config.log"
+INSTALLPREFIX="${THISDir}/inst/python"
+# Always show config.log on exit
+CONFIG_LOG="$THISDir/config.log"
+trap "cat '$CONFIG_LOG'" EXIT
+echo "Building Cpython interpreter for R package use..." >> "$CONFIG_LOG" 2>&1
+cd "$Cpython" >> "$CONFIG_LOG" 2>&1 || exit 1
+echo "Cleaning previous builds..." >> "$CONFIG_LOG" 2>&1
+./configure --disable-test-modules \
+    --prefix="$INSTALLPREFIX" >> "$CONFIG_LOG" 2>&1 || exit 1
+echo "Running make..." >> "$CONFIG_LOG" 2>&1
+make  >> "$CONFIG_LOG" 2>&1 || exit 1
+echo "Running make install..." >> "$CONFIG_LOG" 2>&1
+make install >> "$CONFIG_LOG" 2>&1 || exit 1
+echo "Cpython interpreter built and installed successfully." >> "$CONFIG_LOG" 2>&1

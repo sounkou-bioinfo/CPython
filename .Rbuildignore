@@ -3,3 +3,13 @@
 ^Makefile$
 ^README\.Rmd$
 ^LICENSE\.md$
+^\.gitignore$
+^\.travis\.yml$
+^\.github/workflows/.*$
+^inst/python/.*$
+^src/*\.o$
+^src/*\.so$
+^\.github$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
