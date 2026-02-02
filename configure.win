@@ -18,6 +18,7 @@ echo "Building Cpython interpreter for R package use..." >> "$CONFIG_LOG" 2>&1
 cd "$Cpython" >> "$CONFIG_LOG" 2>&1 || exit 1
 echo "Cleaning previous builds..." >> "$CONFIG_LOG" 2>&1
 ./configure --disable-test-modules \
+    --with-ensurepip=no \
     --prefix="$INSTALLPREFIX" >> "$CONFIG_LOG" 2>&1 || exit 1
 echo "Running make..." >> "$CONFIG_LOG" 2>&1
 make  >> "$CONFIG_LOG" 2>&1 || exit 1

@@ -2,6 +2,7 @@
 ^\.Rproj\.user$
 ^Makefile$
 ^README\.Rmd$
+^README\.html$
 ^LICENSE\.md$
 ^\.gitignore$
 ^\.travis\.yml$
@@ -34,5 +35,5 @@
 ^inst/cpython/\.github$
 ^inst/cpython/Android/testbed/\.idea$
 ^inst/cpython/Doc/\.ruff\.toml$
-^inst/cpython/Mac/Icons/Disk Imag\.icns$
+^inst/cpython/Mac/Icons/Disk Image\.icns$
 ^inst/cpython/Mac/Icons/Python Folder.icns$
