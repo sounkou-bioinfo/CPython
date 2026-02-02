@@ -8,7 +8,7 @@ CC=$(echo "${CC}" | awk '{print $1}')
 AR=`"${R_HOME}/bin/R" CMD config AR`
 AR=$(echo "${AR}" | awk '{print $1}')
 RANLIB=`"${R_HOME}/bin/R" CMD config RANLIB`
-Cpython="${THISDir}/src/cpython"
+Cpython="${THISDir}/inst/cpython"
 > "$THISDir/config.log"
 INSTALLPREFIX="${THISDir}/inst/python"
 # Always show config.log on exit
@@ -20,7 +20,9 @@ echo "Cleaning previous builds..." >> "$CONFIG_LOG" 2>&1
 ./configure --disable-test-modules \
     --prefix="$INSTALLPREFIX" >> "$CONFIG_LOG" 2>&1 || exit 1
 echo "Running make..." >> "$CONFIG_LOG" 2>&1
-make  >> "$CONFIG_LOG" 2>&1 || exit 1
+make -j4 >> "$CONFIG_LOG" 2>&1 || exit 1
 echo "Running make install..." >> "$CONFIG_LOG" 2>&1
 make install >> "$CONFIG_LOG" 2>&1 || exit 1
 echo "Cpython interpreter built and installed successfully." >> "$CONFIG_LOG" 2>&1
+# remove Cpython from inst
+rm -rf "$Cpython" || true
