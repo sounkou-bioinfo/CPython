@@ -50,3 +50,13 @@ if (dir.exists(icons_dir)) {
 # anything ending with .txt or .psd, rst in src/cpython
 removal_files2 <- list.files(cpython_dir, pattern = "\\.txt$|\\.psd$|\\.rst$", recursive = TRUE, full.names = TRUE)
 file.remove(removal_files2)
+# move cpython to inst
+inst_dir <- file.path(root_dir, "inst")
+if (!dir.exists(inst_dir)) {
+    dir.create(inst_dir)
+}
+inst_cpython_dir <- file.path(inst_dir, "cpython")
+if (dir.exists(inst_cpython_dir)) {
+    unlink(inst_cpython_dir, recursive = TRUE, force = TRUE)
+}
+file.rename(cpython_dir, inst_cpython_dir)

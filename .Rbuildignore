@@ -13,3 +13,26 @@
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+^inst/cpython/\.coveragerc$
+^inst/cpython/\.editorconfig$
+^inst/cpython/\.mailmap$
+^inst/cpython/\.pre-commit-config\.yaml$
+^inst/cpython/\.readthedocs\.yml$
+^inst/cpython/\.ruff\.toml$
+^inst/cpython/Apple/\.ruff\.toml$
+^inst/cpython/Tools/build/\.ruff\.toml$
+^inst/cpython/Tools/build/\.warningignore_macos$
+^inst/cpython/Tools/build/\.warningignore_ubuntu$
+^inst/cpython/Tools/clinic/\.ruff\.toml$
+^inst/cpython/Tools/i18n/\.ruff\.toml$
+^inst/cpython/Tools/peg_generator/\.clang-format$
+^inst/cpython/Tools/peg_generator/\.ruff\.toml$
+^inst/cpython/Tools/wasm/\.editorconfig$
+^inst/cpython/Tools/wasm/\.ruff\.toml$
+^inst/cpython/\.azure-pipelines$
+^inst/cpython/\.devcontainer$
+^inst/cpython/\.github$
+^inst/cpython/Android/testbed/\.idea$
+^inst/cpython/Doc/\.ruff\.toml$
+^inst/cpython/Mac/Icons/Disk Imag\.icns$
+^inst/cpython/Mac/Icons/Python Folder.icns$

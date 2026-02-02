@@ -1,11 +1,13 @@
 Package: CPython
-Title: Python` Interpreter For `R` Package Use 
+Title: 'Python' Interpreter For 'R' Package Use 
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Sounkou Mahamane", family = "Toure", email = "soukoutoure@gmail.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Description: 'Python' interpreter built from source for use within 'R' packages.
+Depends: R (>= 4.1.0)
 License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
 URL: https://sounkou-bioinfo.github.io/CPython/
+BugReports: https://github.com/sounkou-bioinfo/CPython/issues
