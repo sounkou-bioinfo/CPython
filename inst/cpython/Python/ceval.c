@@ -3,6 +3,9 @@
 #define _PY_INTERPRETER
 
 #include "Python.h"
+#ifdef WIN32
+#include <windows.h>
+#endif
 #include "pycore_abstract.h"      // _PyIndex_Check()
 #include "pycore_audit.h"         // _PySys_Audit()
 #include "pycore_backoff.h"
@@ -443,7 +446,15 @@ hardware_stack_limits(uintptr_t *base, uintptr_t *top, uintptr_t sp)
 {
 #ifdef WIN32
     ULONG_PTR low, high;
+#if defined(_WIN32_WINNT) && _WIN32_WINNT >= _WIN32_WINNT_WIN8
     GetCurrentThreadStackLimits(&low, &high);
+#else
+    // Fallback for older Windows versions
+    MEMORY_BASIC_INFORMATION mbi;
+    VirtualQuery(&mbi, &mbi, sizeof(mbi));
+    low = (ULONG_PTR)mbi.AllocationBase;
+    high = low + mbi.RegionSize;
+#endif
     *top = (uintptr_t)high;
     ULONG guarantee = 0;
     SetThreadStackGuarantee(&guarantee);
